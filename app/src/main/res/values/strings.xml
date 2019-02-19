@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LS&amp;HN_Morgage_Calculator_App</string>
+    <string name="purchasePrice">Purchase Price</string>
+    <string name="downPayment">Down Payment</string>
+    <string name="interestRate">Interest Rate</string>
+    <string name="loanDuration">Loan Duration</string>
+    <string name="loanAmount">Loan Amount</string>
+    <string name="monthlyLoan10">Monthly Loan (10)</string>
+    <string name="monthlyLoan20">Monthy Loan (20)</string>
+    <string name="monthlyLoan30">Monthly Loan (30)</string>
+    <string name="monthlyLoan">Monthly Loan</string>
+</resources>

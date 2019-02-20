@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LS&amp;HN_Morgage_Calculator_App</string>
+    <string name="purchasePrice">Preciso de Compra</string>
+    <string name="downPayment">Pago Inicial</string>
+    <string name="interestRate">Tasa de Interés</string>
+    <string name="loanDuration">Duración del Préstamo</string>
+    <string name="loanAmount">Monto del Préstamo</string>
+    <string name="monthlyLoan">Préstamo Mensual</string>
+    <string name="monthlyLoan10">Préstamo Mensual (10)</string>
+    <string name="monthlyLoan20">Préstamo Mensual (20)</string>
+    <string name="monthlyLoan30">Préstamo Mensual (30)</string>
+    <string name="enter_purchase_price">" Ingrese el Precio de Compra"</string>
+    <string name="enter_down_payment">" Ingrese el Pago Inicial"</string>
+    <string name="enter_interest_rate">" Introduzca la Tasa de Interés"</string>
+</resources>

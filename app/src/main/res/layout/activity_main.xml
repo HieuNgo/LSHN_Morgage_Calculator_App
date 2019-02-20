@@ -186,21 +186,27 @@
         android:id="@+id/purchasePriceTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_row="9"
-        android:layout_column="1" />
+        android:layout_row="0"
+        android:layout_column="1"
+        android:background="@color/textViewBlock"
+        android:hint="@string/enter_purchase_price" />
 
     <TextView
         android:id="@+id/downPaymentTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_row="10"
-        android:layout_column="1" />
+        android:layout_row="1"
+        android:layout_column="1"
+        android:background="@color/textViewBlock"
+        android:hint="@string/enter_down_payment" />
 
     <TextView
         android:id="@+id/interestRateTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_row="11"
-        android:layout_column="1" />
+        android:layout_row="2"
+        android:layout_column="1"
+        android:background="@color/textViewBlock"
+        android:hint="@string/enter_interest_rate" />
 
 </GridLayout>

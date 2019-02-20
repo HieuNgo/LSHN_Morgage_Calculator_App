@@ -9,4 +9,7 @@
     <string name="monthlyLoan20">Monthy Loan (20)</string>
     <string name="monthlyLoan30">Monthly Loan (30)</string>
     <string name="monthlyLoan">Monthly Loan</string>
+    <string name="enter_purchase_price">Enter Purchase Price</string>
+    <string name="enter_down_payment">Enter Down Payment</string>
+    <string name="enter_interest_rate">Enter Interest Rate</string>
 </resources>

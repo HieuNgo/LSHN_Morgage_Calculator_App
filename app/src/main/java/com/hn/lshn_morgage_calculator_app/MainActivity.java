@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView  monthly20LoanTextView;
     private TextView  monthly30LoanTextView;
     private TextView monthlyLoanTextView;
+    private TextView purchasePriceTextView;
+    private TextView downPaymentTextView;
+    private TextView interestRateTextView;
+    private TextView loanDurationLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         monthly20LoanTextView = (TextView) findViewById(R.id.monthy20LoanTextView);
         monthly30LoanTextView = (TextView) findViewById(R.id.monthy30LoanTextView);
         monthlyLoanTextView = (TextView) findViewById(R.id.monthyLoanTextView);
+        purchasePriceTextView = (TextView) findViewById(R.id.purchasePriceTextView);
+        downPaymentTextView = (TextView) findViewById(R.id.downPaymentTextView);
+        interestRateTextView = (TextView) findViewById(R.id.interestRateTextView);
+
 
         loanAmountTextView.setText(currencyFormat.format(0));
         monthly10LoanTextView.setText(currencyFormat.format(0));
@@ -62,14 +70,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculate(){
-
         double loanAmount = purchasePrice - downPayment;
-        double loanWithInterest = (loanAmount * interestRate) + loanAmount;
-        double monthly10 = loanWithInterest / (10*12);
-        double monthly20 = loanWithInterest / (20*12);
-        double monthly30 = loanWithInterest / (30*12);
-        double monthlyCustom = loanWithInterest / (loanDuration * 12);
-
+        double c = interestRate;
+        double monthly10 = loanAmount*c*Math.pow((1 + c),120)/(Math.pow((1 + c),120) - 1);
+        double monthly20 = loanAmount*c*Math.pow((1 + c),240)/(Math.pow((1 + c),240) - 1);
+        double monthly30 = loanAmount*c*Math.pow((1 + c),360)/(Math.pow((1 + c),360) - 1);
+        double months = loanDuration * 12;
+        double monthlyCustom = loanAmount*c*Math.pow((1 + c),months)/(Math.pow((1 + c),months) - 1);
         monthly10LoanTextView.setText(currencyFormat.format(monthly10));
         monthly20LoanTextView.setText(currencyFormat.format(monthly20));
         monthly30LoanTextView.setText(currencyFormat.format(monthly30));
@@ -83,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress,
                                               boolean fromUser) {
-                    loanDuration = progress; // set percent based on progress
+                    loanDuration = progress; // set percent based on progress\
+                    loanDurationLabel.setText(loanDuration);
                     calculate(); // calculate and display tip and total
                 }
 
@@ -102,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
 
             try { // get bill amount  and display currency formatted value
                 purchasePrice = Double.parseDouble(s.toString()) / 100.0;
-                purchasePriceEditText.setText(currencyFormat.format(purchasePrice));
+                purchasePriceTextView.setText(currencyFormat.format(purchasePrice));
             }
             catch (NumberFormatException e) { // if s is empty or non-numeric
-                purchasePriceEditText.setText("");
+                purchasePriceTextView.setText("");
                 purchasePrice = 0.0;
             }
 
@@ -128,10 +136,10 @@ public class MainActivity extends AppCompatActivity {
 
             try { // get bill amount and display currency formatted value
                 downPayment = Double.parseDouble(s.toString()) / 100.0;
-                downPaymentEditText.setText(currencyFormat.format(downPayment));
+                downPaymentTextView.setText(currencyFormat.format(downPayment));
             }
             catch (NumberFormatException e) { // if s is empty or non-numeric
-                downPaymentEditText.setText("");
+                downPaymentTextView.setText("");
                 downPayment = 0.0;
             }
 
@@ -155,10 +163,10 @@ public class MainActivity extends AppCompatActivity {
 
             if(interestRate>0 && interestRate <=100){ // get bill amount and display currency formatted value
                 interestRate = Double.parseDouble(s.toString());
-                interestRateEditText.setText(currencyFormat.format(purchasePrice));
+                interestRateTextView.setText(currencyFormat.format(purchasePrice));
             }
             else { // if s is empty or non-numeric
-                interestRateEditText.setText("");
+                interestRateTextView.setText("");
                 interestRate = 0.0;
             }
 

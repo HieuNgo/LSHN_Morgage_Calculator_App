@@ -74,12 +74,10 @@ public class MainActivity extends AppCompatActivity {
     private void calculate(){
         loanDurationLabel.setText(String.format("%d years", loanDuration));
         double loanAmount = purchasePrice - downPayment;
-        double c = interestRate;
-        // double monthly10 = loanAmount*c*Math.pow((1 + c),12)/(Math.pow((1 + c),12) - 1);
-        double monthly10 = 5* loanAmount;
-        double monthly20 = interestRate;
-        //double monthly20 = loanAmount * c * (Math.pow((1 + c),24)) / (Math.pow((1 + c),24) - 1);
-        double monthly30 = loanAmount*c*Math.pow((1 + c),36)/(Math.pow((1 + c),36) - 1);
+        double c = interestRate/12;
+        double monthly10 = loanAmount*c*Math.pow((1 + c),120)/(Math.pow((1 + c),120) - 1);
+        double monthly20 = loanAmount * c * (Math.pow((1 + c),240)) / (Math.pow((1 + c),240) - 1);
+        double monthly30 = loanAmount*c*Math.pow((1 + c),360)/(Math .pow((1 + c),360) - 1);
         double months = loanDuration * 12;
         double monthlyCustom = loanAmount*c*Math.pow((1 + c),months)/(Math.pow((1 + c),months) - 1);
         loanAmountTextView.setText(currencyFormat.format(loanAmount));
@@ -168,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(interestRate>=0 && interestRate <=100){ // get bill amount and display currency formatted value
                 interestRate = Double.parseDouble(s.toString());
-                interestRateTextView.setText(percentFormat.format(purchasePrice));
+                interestRateTextView.setText(percentFormat.format(interestRate));
             }
             else { // if s is empty or non-numeric
                 interestRateTextView.setText("");
